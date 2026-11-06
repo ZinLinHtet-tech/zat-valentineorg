@@ -8,6 +8,16 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <meta name="description" content="Create, customize, and share a sweet Valentine moment." />
     <title>Valentine Studio</title>
+    <script>
+      // Existing shared cards include their content in the URL.
+      const cardParameters = ['title', 'celebrate', 'imageBefore', 'imageAfter', 'bg', 'card', 'text'];
+      const params = new URLSearchParams(location.search);
+      const isEntry = location.pathname === '/' || location.pathname === '/index.html';
+      const isPublicDomain = ['zatvalentine.lat', 'www.zatvalentine.lat'].includes(location.hostname);
+      if (isPublicDomain && isEntry && !cardParameters.some(key => params.has(key))) {
+        location.replace('https://zat-valentine-v12-test.onrender.com/studio/quick');
+      }
+    </script>
     <script type="module" crossorigin src="/assets/index-xaaEmIad.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CNVAqMQ8.css">
   </head>
